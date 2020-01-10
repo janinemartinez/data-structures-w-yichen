@@ -52,9 +52,38 @@ def sort_by_cohort(filename):
     ghosts = []
 
     # Code goes here
+    cohort_data = open(filename)
+    # print(cohort_data)
+    for line in cohort_data:
+        line = line.rstrip()
+        data = line.split("|")
 
+        if data[4] == "Winter 2016":
+            winter_16.append(data[0] + " " + data[1])
+
+        if data[4] == "Spring 2016":
+            spring_16.append(data[0] + " " + data[1])
+
+        if data[4] == "Summer 2016":
+            summer_16.append(data[0] + " " + data[1])
+
+        if data[4] == "Fall 2015":
+            fall_15.append(data[0] + " " + data[1])
+
+        if data[4] == "G":
+            ghosts.append(data[0] + " " + data[1])
+    # # print(ghosts)
+    # print(fall_15)
+    all_students = [fall_15, winter_16, spring_16, summer_16, ghosts]
+    # all_students.extend(fall_15)
+    # all_students.extend(winter_16)
+    # all_students.extend(spring_16)
+    # all_students.extend(summer_16)
+    # all_students.extend(ghosts)
+    # print(all_students)
     return all_students
 
+sort_by_cohort("cohort_data.txt")
 
 def hogwarts_by_house(filename):
     """TODO: Sort students into lists by house and return all lists in one list.
@@ -80,6 +109,43 @@ def hogwarts_by_house(filename):
     instructors = []
 
     # Code goes here
+
+    cohort_data = open(filename)
+    # print(cohort_data)
+    for line in cohort_data:
+        line = line.rstrip()
+        data = line.split("|")
+
+        if data[2] == "Dumbledore's Army":
+            dumbledores_army.append(data[1])
+
+        if data[2] == "Gryffindor":
+            gryffindor.append(data[1])
+
+        if data[2] == "Hufflepuff":
+            hufflepuff.append(data[1])
+
+        if data[2] == "Ravenclaw":
+            ravenclaw.append(data[1])
+
+        if data[2] == "Slytherin":
+            slytherin.append(data[1])
+
+        if data[4] == "G":
+            ghosts.append(data[1])
+
+        if data[4] == "I":
+            instructors.append(data[1])
+
+    dumbledores_army.sort()
+    gryffindor.sort()
+    hufflepuff.sort()
+    ravenclaw.sort()
+    slytherin.sort()
+    ghosts.sort()
+    instructors.sort()
+
+    all_hogwarts = [dumbledores_army, gryffindor, hufflepuff, ravenclaw, slytherin, ghosts, instructors]
 
     return all_hogwarts
 
