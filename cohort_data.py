@@ -53,7 +53,6 @@ def sort_by_cohort(filename):
 
     # Code goes here
     cohort_data = open(filename)
-    # print(cohort_data)
     for line in cohort_data:
         line = line.rstrip()
         data = line.split("|")
@@ -166,8 +165,25 @@ def all_students_tuple_list(filename):
     student_list = []
 
     # Code goes here
+    cohort_data = open(filename)
+    for line in cohort_data:
+        line = line.rstrip()
+        data = line.split("|")
 
+        if data[4] != "G" and data[4] != "I":
+            full_name = data[0] + " " + data[1]
+            #print(full_name)
+            
+            student_data = (full_name, data[2], data[3], data[4])
+
+            student_list.append(student_data)
+    
+    #print(student_data)
+    
     return student_list
+
+
+all_students_tuple_list("cohort_data.txt")
 
 
 def find_cohort_by_student_name(student_list):
@@ -191,6 +207,13 @@ def find_cohort_by_student_name(student_list):
     """
 
     # Code goes here
+   
+    student_name = input("Who are you looking for?" )
+
+    
+    for i in range(len(student_list)): 
+        if student_name == student_list[i][0]:
+            print(f'{student_name} was in the {student_list[i][3]}.')  
 
     return "Student not found."
 
